@@ -4,7 +4,7 @@ function path(u){try{const x=new URL(String(u).trim(),BASE);return x.pathname.re
 async function doc(p){const r=await harbor.http(BASE+p,{responseType:"text"});return r.ok?harbor.parseHtml(r.body):null}
 function text(r,s){for(const x of s){const e=r.querySelector(x),t=e?(e.text()||"").trim():"";if(t)return t}return""}
 function meta(d,n){const w=n.map(x=>x.toLowerCase());for(const m of d.querySelectorAll("meta")){const k=((m.attr("property")||m.attr("name")||"")+"").toLowerCase();if(w.includes(k))return(m.attr("content")||"").trim()}return""}
-function img(i){return i&&abs(i.attr("data-src")||i.attr("data-lazy-src")||i.attr("data-original")||i.attr("data-lazy")||i.attr("src"))}
+function img(i){return i&&abs(i.attr("data-src")||i.attr("data-lazy-src")||i.attr("data-original")||i.attr("src"))}
 function cover(d){const m=meta(d,["og:image","twitter:image"]);if(m)return abs(m);for(const s of [".summary_image img",".summary-image img",".post-thumbnail img"]){const u=img(d.querySelector(s));if(u)return u}}
 function isChapterLink(h){return /\/manga\/[^/]+\/\d+(?:\.\d+)?\/?(?:\?.*)?$/i.test(h)||/(?:chapter|الفصل)[\s._-]*\d+(?:\.\d+)?/i.test(h)}
 function chnum(t,h){const s=`${t||""} ${h||""}`;for(const r of [/chapter[\s._-]*(\d+(?:\.\d+)?)/i,/الفصل[\s._-]*(\d+(?:\.\d+)?)/i,/\bch[\s._-]*(\d+(?:\.\d+)?)/i,/\/([0-9]+(?:\.[0-9]+)?)\/?(?:\?|$)/]){const m=s.match(r);if(m)return m[1]}return null}
