@@ -1,0 +1,14 @@
+{
+  "name": "3asq.online Repo v11",
+  "plugins": [
+    {
+      "id": "3asq-online-v11",
+      "name": "3asq.online v11",
+      "version": "1.0.11",
+      "lang": "ar",
+      "nsfw": false,
+      "icon": "https://3asq.online/favicon.ico",
+      "entry": "3asq-online-v11.plugin.js"
+    }
+  ]
+}
